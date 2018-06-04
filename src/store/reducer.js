@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
     case actions.ADD_PERSON:
     return {
       ...state,
-      persons: state.persons.concat(getPerson())
+      persons: state.persons.concat(getPerson(action.payload.name, action.payload.age))
     }
     case actions.DELETE_PERSON:
       return {
@@ -23,10 +23,10 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-function getPerson() {
+function getPerson(name, age) {
   return {
     id: Math.random(), // not really unique but good enough here!
-    name: 'Max',
-    age: Math.floor( Math.random() * 40 )
+    name: name,
+    age: age
   }
 }
